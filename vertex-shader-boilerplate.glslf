@@ -37,16 +37,29 @@ Shader "SMO/NewImageEffectShader"
                 float4 vertex : SV_POSITION;
             };
 
+            // vertex shader function
             v2f vert (appdata v)
             {
                 v2f o;
-                o.vertex = UnityObjectToClipPos(v.vertex);
+
+                // from UnityCG.cginc
+                o.vertex = UnityObjectToClipPos(v.vertex); //transforms input vertices defined in the Unity world space, to the screen clip space
+                
                 o.uv = v.uv;
                 return o;
             }
+             
 
-            sampler2D _MainTex;
+            // you need to create an instance of any properties you set
+            sampler2D _MainTex; 
 
+            // we havent defined this but you could have made: 
+            // _MainText_ST which also contains scaling and UV offset data for the texture
+
+
+            // fragment pixel shader 
+            // runs once for each pixel of object
+            // output is fixed4 RGBA
             fixed4 frag (v2f i) : SV_Target
             {
                 fixed4 col = tex2D(_MainTex, i.uv);
