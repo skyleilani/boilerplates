@@ -1,10 +1,3 @@
-add New
-folder_open Open
-timeline Test
-arrow_upward Export
-autorenew Update: ON
-// p(z) = z3 − 2z + 2.
-​
 #ifdef GL_ES
 precision highp float;
 #endif
@@ -29,7 +22,7 @@ void main()
 vec2 st=(gl_FragCoord.xy-0.5/u_resolution)/u_resolution;
 vec2 
 c=2.*(u_mouse/u_resolution);
-x'*' : syntax error
+
 vec2 z=st;
 z*=3.;
 z-=1.45;
@@ -55,7 +48,7 @@ cols[8]=cols[2];
 if(f>1./2. && f<=1./1.)
 cols[8]=cols[1];
 col=mix(col,cols[8],f);
-​
+
 col+=interpolate(0.,y[0]);
 col+=interpolate(0.,y[1]);
 gl_FragColor=vec4(col,1);
