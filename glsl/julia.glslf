@@ -1,16 +1,17 @@
 #ifdef GL_ES
 precision highp float;
 #endif
+
 uniform vec2 u_resolution;
 uniform vec2 u_mouse;
 uniform float u_time;
-float interpolate(float edge, float test)
-{
+
+float interpolate(float edge, float test){
 float result=step(edge-0.0001,test)-step(edge+0.005,test);
 return result;
 }
-void main()
-{
+
+void main(){
     vec3 cols[9];
     cols[0]=vec3(0.800,1.000,0.696);
     cols[1]=vec3(1.000,0.885,0.816);
@@ -31,8 +32,7 @@ float y[3];
 y[0]=z.x;
 y[1]=z.y;
 int iter=0;
-for(int i=0;i<100;i++)
-{
+for(int i=0;i<100;i++){
     z=vec2(z.x*z.x - z.y*z.y+ c.x, 2. *z.x*z.y +c.y);
     if(length(z)>1.2)
     break;
